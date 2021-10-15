@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="dashboard.css" rel="stylesheet" />
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <title>Fiche Client</title>
+
+    <!-- STYLE -->
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar Start -->
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block sidebar collapse"
+        >
+          <div class="d-flex align-items-center justify-content-center pt-1">
+            <img src="images/enragri-logo.png" alt="" />
+          </div>
+          <div class="d-flex align-items-center justify-content-center mt-3">
+            <input
+              class="search form-control form-control-sm"
+              type="text"
+              placeholder="Recherche"
+              aria-label=".form-control-sm example"
+            />
+          </div>
+          <div class="pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">
+                  <i class="fi fi-rr-apps"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <i class="fi fi-rr-address-book"></i>
+                  Liste clients
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-truck-side"></i>
+                  Liste fournisseurs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-envelope"></i>
+                  Message
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-notebook"></i>
+                  Tache
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-map-marker"></i>
+                  Map
+                </a>
+              </li>
+            </ul>
+
+            <hr />
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-settings"></i>
+                  Paramètres
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-interrogation"></i>
+                  Aide
+                </a>
+              </li>
+              <hr />
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fi fi-rr-sign-out"></i>
+                  Déconnexion
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Sidebar End -->
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <!-- Navbar Start -->
+
+          <header class="py-3 mb-3 border-bottom">
+            <div
+              class="
+                container-fluid
+                d-grid
+                gap-3
+                align-items-center
+                d-flex
+                justify-content-end
+              "
+              style="grid-template-columns: 1fr 2fr"
+            >
+              <button class="dashBtn btn d-lg-none d-md-none">Dashboard</button>
+
+              <div class="d-flex align-items-center">
+                <div>
+                  <a href="#"><i class="fi fi-rr-envelope me-4"></i></a>
+                </div>
+                <div>
+                  <a href="#"><i class="fi fi-rr-bell me-4"></i></a>
+                </div>
+
+                <div class="flex-shrink-0 dropdown">
+                  <a
+                    href="#"
+                    class="
+                      d-block
+                      link-dark
+                      text-decoration-none
+                      dropdown-toggle
+                    "
+                    id="dropdownUser2"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="https://github.com/mdo.png"
+                      alt="mdo"
+                      width="32"
+                      height="32"
+                      class="rounded-circle"
+                    />
+                  </a>
+                  <ul
+                    class="dropdown-menu text-small shadow"
+                    aria-labelledby="dropdownUser2"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#">New project...</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- Navbar End -->
+
+          <div
+            class="
+              titre
+              d-flex
+              justify-content-start
+              flex-wrap flex-md-nowrap
+              align-items-start
+              pt-3
+              pb-2
+              mb-3
+            "
+          >
+            <p class="title">
+              Business Plan</span>
+            </p>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <h5>Les caracterisitique de la main d'oeuvre</h5>
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col">Investissement</th>
+                      <th scope="col"></th>
+                      <th scope="col">Année d'invt.</th>
+                      <th scope="col">Durée ammort.(Année)</th>
+                      <th scope="col">Autre Invest</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1/ Ouverture du chantier</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Hypothèque</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2/ Lot1: Process méthanisation</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>BFR</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3/ Lot2: Valorisation</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Audit assurentiel</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4/ Lot3: Terassement grande masse - Talutage - VRD</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Audit juridique</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5/ Lot4: Génie Civil circulaire digestat liquide + couverture</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Audit technique</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6/ Lot5: Génie Civil ouvrage périphériques</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Audit fiscal</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7/ Lot6: Charpante - Batiment - Couverture</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Convention de credit(dett)</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8/ Lot7: Courant fort - Soutirage - Electricité génerale</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>Suivi de chantier</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9/ Maitrise d'oeuvre</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>In front (oblig)</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10/ Assistance maitrise d'ouvrage</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td></td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">11/ Materiel</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td class="hLine bLine">Total</td>
+                      <td class="hLine bLine">199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">GRDF raccordement après refaction</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+            
+                    </tr>
+                    <tr>
+                      <th scope="row">Etude de conception</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+            
+                    </tr>
+                    <tr>
+                      <th scope="row" class="bLine">Autre invest.</th>
+                      <td class="bLine">199.5b</td>
+                      <td class="bLine">199.5b</td>
+                      <td class="bLine">199.54</td>
+            
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col">Financement</th>
+                      <th scope="col"></th>
+                      <th scope="col">%</th>
+                      <th scope="col">Année de liberation</th>
+                      <th scope="col">Durée emprunt (LT/CT)</th>
+                      <th scope="col">Taux</th>
+                      <th scope="col">Echéance(M/T/S/A)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="dbLine">
+                      <th scope="row">Fonds propres</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Subvention</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Capita/Apport en compte courant</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Emprunt Capital</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr class="dhLine dbLine">
+                      <th scope="row">Location vente constructeur</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr class="dhLine dbLine">
+                      <th scope="row">Emprunt long terme</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">Total Financement(hors CT)</th>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="hLine bLine">Emprunt court terme subvention</th>
+                      <td class="hLine bLine">199.54</td>  
+                    </tr>
+                      
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <h5>Les caracterisitique de l'investissement</h5>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">Puissance méthaniseur (Nm3/h)</th>
+                      <td>199.54</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Nombre d'heure retenues</th>
+                      <td>8200</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date prev. signature du contrat d'achat</th>
+                      <td>12/06/2022</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tarif au debut de contrat (€/kWh PCS)</th>
+                      <td>9.61</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">Inflation</th>
+                      <td>1.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <h5>Les caracterisitique de la main d'oeuvre</h5>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">Nombre d'heure par mois</th>
+                      <td>141</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Taux horaires</th>
+                      <td>30.00€</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">% Hausse salaire</th>
+                      <td>1.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">Taux charge patronales</th>
+                      <td>35.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <h5>Repartition des couts d'investissement</h5>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">CAPEX construction</th>
+                      <td>141</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">CAPEX Conception - Etudes techniques</th>
+                      <td>30.00€</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">GRDF raccoredement après refaction</th>
+                      <td>1.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">Total CAPEX</th>
+                      <td>35.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine"> 
+                      <th scope="col">Autres invest.</th>
+                      <th scope="col">000</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bLine">
+                      <th scope="row">Grand Total</th>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+
+                <h3>Les Ratio</h3>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">Tri (IRR)</th>
+                      <td>141</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Taux rendement S/ Apport (ROE)</th>
+                      <td>30.00€</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Delais recup capital investi</th>
+                      <td>1.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">TPS retour S/ Fond propres</th>
+                      <td>35.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Somme FCF</th>
+                      <td>35.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">DCF</th>
+                      <td>35.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">DSCR moyen</th>
+                      <td>35.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <h3>Caracterisitiques d'imposition CFE/FER</h3>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">Nature d'activité</th>
+                      <td>141</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">% Hausse impot</th>
+                      <td>30.00€</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">% De la taxe foncière local</th>
+                      <td>1.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">subvention Ademe</th>
+                      <td>35.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <h3>Autres produits</h3>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine bLine">
+                      <th scope="row">Redevance traitement de dechets</th>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-5 mt-3 mb-3">
+              <div class="row">
+                <h3>Financement du capital</h3>
+                <table class="table">
+                  <thead>
+                    <tr class="hLine">
+                      <th scope="col">Financement des FP</th>
+                      <th scope="col">Oui</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">Saisie % Capital à emprunter</th>
+                      <th scope="col">99%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">% Capital à emprunter</th>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">€ emprunté / Financement FP</th>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Caracterisitiques de l'emprunt</th>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">Interets de l'obligation</th>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <h2>Business Plan</h2>
+                <table class="table">
+                  <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="col"></th>
+                      <th scope="col">2021</th>
+                      <th scope="col">2022</th>
+                      <th scope="col">2023</th>
+                      <th scope="col">2024</th>
+                      <th scope="col">2025</th>
+                      <th scope="col">2026</th>
+                      <th scope="col">2027</th>
+                      <th scope="col">2028</th>
+                      <th scope="col">2029</th>
+                      <th scope="col">2030</th>
+                      <th scope="col">2031</th>
+                      <th scope="col">2032</th>
+                      <th scope="col">2033</th>
+                      <th scope="col">2034</th>
+                      <th scope="col">2035</th>
+                      <th scope="col">2036</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Monté en charge %</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Production annuelle biomethane (MWh PCS/an)
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Inflation tarif GRDF (%)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Indice d'inflation tarif GRDF cumulé</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tarif biométhane (€/MWh)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                      <tr  class="hLine bLine">
+                        <th scope="row" colspan="18">Production vendue</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <th scope="row">vente de biométhane</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Redevance traitement des dechets</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Vente de digestat solide</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Vente de digestat liquide</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Production de l'exercice</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="bLine">
+                      <th scope="row" colspan="18">Marge brute de production</th>
+                    </tr>
+                  </thead>
+                    <tr>
+                      <th scope="row">Achat de matières</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Marge brute globale</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Autres achats et charges Ext.</th>
+                    <tr>
+                    </thead>
+                      <th scope="row">Charge d'exploiatation</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges consommables</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges entretien</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges logistiques</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges ensilage</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Valeur ajoutée</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Impots et taxes</th>
+                    </tr>
+                  </thead>
+                    <tr>
+                      <th scope="row">Taxes foncières S/ Batie (TFPB)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Cotisation foncière ETP (CFE)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Remuniration</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Salaires</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges sociales</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">URSSAF/MSA</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Total</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Exedant brute d'exploitation</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Dotation aux amort</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                      <th scope="row">DAP</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Resultat d'exploitation</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges financiàres</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Interets emprunt</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Interets obligations</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Location vente construction</th>
+                    </tr>
+                    </thead>
+                    <tr class="hLine bLine">
+                      <th scope="row">Resultat courant</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Produits exceptionnels</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                      <th scope="row">Quote part subvention</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Résultat exceptionnel</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <thead class="table-success">
+                    <tr class="hLine bLine">
+                      <th scope="row" colspan="18">Impots sur les bénéfices</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                      <th scope="row">IS (28% et 25% à partir de 2022)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Résultat NET</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="clientfile container col-11  mt-3 mb-3">
+              <div class="row">
+                <h2>Autofinancement</h2>
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col"></th>
+                      <th scope="col">2021</th>
+                      <th scope="col">2022</th>
+                      <th scope="col">2023</th>
+                      <th scope="col">2024</th>
+                      <th scope="col">2025</th>
+                      <th scope="col">2026</th>
+                      <th scope="col">2027</th>
+                      <th scope="col">2028</th>
+                      <th scope="col">2029</th>
+                      <th scope="col">2030</th>
+                      <th scope="col">2031</th>
+                      <th scope="col">2032</th>
+                      <th scope="col">2033</th>
+                      <th scope="col">2034</th>
+                      <th scope="col">2035</th>
+                      <th scope="col">2036</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">EBE</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">+Revenue exceptionnel</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Charges financières</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">IS</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Capacité d'autofinancement</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Rembours. des emprunts</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Dividandes</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Free Cash-Flow</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Discount cash flow</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <h5>
+                  Comparatif des 3 solutions ENRagri solutions VS Marché actuel
+                </h5>
+                <table class="table">
+                  <tbody>
+                    <tr class="hLine">
+                      <th scope="row">Résultat 1 = solution ENR Agri</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Résultat 2 = Solution de marché actuelle (concurence)
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">
+                        Résultat 3 = Vous désposez de tous les fonds propres
+                        nécessaires
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col"></th>
+                      <th scope="col">2021</th>
+                      <th scope="col">2022</th>
+                      <th scope="col">2023</th>
+                      <th scope="col">2024</th>
+                      <th scope="col">2025</th>
+                      <th scope="col">2026</th>
+                      <th scope="col">2027</th>
+                      <th scope="col">2028</th>
+                      <th scope="col">2029</th>
+                      <th scope="col">2030</th>
+                      <th scope="col">2031</th>
+                      <th scope="col">2032</th>
+                      <th scope="col">2033</th>
+                      <th scope="col">2034</th>
+                      <th scope="col">2035</th>
+                      <th scope="col">2036</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">ENR AGRI</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">EN Equity 33.0%</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <h5>Tableau d'amortissement</h5>
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col"></th>
+                      <th scope="col">1</th>
+                      <th scope="col">2</th>
+                      <th scope="col">3</th>
+                      <th scope="col">4</th>
+                      <th scope="col">5</th>
+                      <th scope="col">6</th>
+                      <th scope="col">7</th>
+                      <th scope="col">8</th>
+                      <th scope="col">9</th>
+                      <th scope="col">10</th>
+                      <th scope="col">11</th>
+                      <th scope="col">12</th>
+                      <th scope="col">13</th>
+                      <th scope="col">14</th>
+                      <th scope="col">15</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1/ Ouverture du chantier</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2/ Lot1: Process méthanisation</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3/ Lot2: Valorisation</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        4/ Lot3: Terassement grande masse - talutage - VRD
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        5/ Lot4: Génie Civil circulaire digestat liquide +
+                        couverture simple
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        6/ Lot5: Génie Civil ouvrage périphériques
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        7/ Lot6: Charpente - batiment - couverture
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        8/ Lot7: Courant fort - Soutirage - Electricité génerale
+                      </th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9/ Maitrise d'oeuvre</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10/ Assistance à maitrise d'ouvrage</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">11/ Materiel</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Empty</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">GRDF raccordement après refaction</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Etudes de conception</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Autres invest.</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="hLine bLine">
+                      <th scope="row">Total investissement</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col">DEBET SERVICE COUVRAGE RATION</th>
+                      <th scope="col" colspan="18">100%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">EBE /IS</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Service annuelle de la dette (bancaire)</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Interet des obligations</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                    <tr class="bLine">
+                      <th scope="row">DSCR</th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col">PROJET AVANT IS</th>
+                      <th scope="col" colspan="18">1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="hLine bLine">
+                      <th scope="row"></th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clientfile container col-11 mt-3 mb-3">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr class="hLine bLine table-success">
+                      <th scope="col">Renta sur apport</th>
+                      <th scope="col" colspan="18">1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="hLine bLine">
+                      <th scope="row"></th>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                      <td>0.00%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+      integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+      integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+      crossorigin="anonymous"
+    ></script>
+    <script src="dashboard.js"></script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
